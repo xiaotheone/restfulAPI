@@ -1,0 +1,6 @@
+1: go to config folder
+2: open db.js javascript file
+3: create database in mlab and put in your database url
+4: the web service runs on port 3000
+5: API end point is localhost:3000/notes
+6: type node server.js in command prompt
