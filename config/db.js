@@ -1,3 +1,3 @@
 module.exports={
-   url: "your mlab mongo database url"
+   url: "mongodb://xiaotheone:xiaoqi@ds233208.mlab.com:33208/freecodecamp"
 }

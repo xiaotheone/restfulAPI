@@ -1,9 +1,10 @@
 var ObjectID = require('mongodb').ObjectID
 
+
 module.exports = function (app,db){
-    app.get('/notes/:id',(req,res)=>{
-        const id = req.params.id
-        const details = {'_id': new ObjectID(id)}
+    app.get('/notes/',(req,res)=>{
+        const id = req.query.id
+        const details = {'_id': ObjectID(id)}
        db.collection('notes').findOne(details,(err,item)=>{
         if(err){
             res.send({'error': 'An error has occured'})
@@ -49,7 +50,27 @@ module.exports = function (app,db){
                 }
         })
     })
-    app.get('/notes/',(req,res)=>{
-                    res.send("Hello World")
-    })
+    // app.get('/notes/all',(req,res)=>{
+        
+    //   db.collection('notes').find({}).toArray(function(err,result){
+
+    //     if(err)
+    //     res.send({'error': 'An error has occured'})
+    //     else{
+    //         res.send(result)
+    //     }
+    //   })
+       
+    // })
+    app.get('/notes/all',(req,res)=>{
+        
+        db.collection('notes').find({}).toArray(function(err,result){
+          if(err)
+          res.send({'error': 'An error has occured'})
+          else{
+              res.send(result)
+          }
+        })
+         
+      })
 }
